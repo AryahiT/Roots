@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import AuthenticationServices  // For Sign in with Apple
 
 struct LoginView: View {
     @State private var email = ""
@@ -41,21 +42,22 @@ struct LoginView: View {
                     //username box
                     //firebase storing of usernames and passwords!!
                     TextField("   Email", text: $email)
-                        .frame(width:295, height: 40)
+                        .frame(width:325, height: 40)
                         .background(Color.white)
                         .cornerRadius(10)
                         .padding()
-                        .padding(.leading, 20)
+                        .padding(.leading, 25)
                         .shadow(color: .gray.opacity(0.3), radius: 4, x: 0, y: 2)
                     SecureField("   Password", text: $password)
-                        .frame(width:295, height: 40)
+                        .frame(width:325, height: 40)
                         .background(Color.white)
                         .cornerRadius(10)
                         .padding()
-                        .padding(.leading, 20)
+                        .padding(.leading, 25)
                         .shadow(color: .gray.opacity(0.3), radius: 4, x: 0, y: 2)
                     //if incorrect display "Incorrect Password Stuff at the top
                 }
+                .offset(y: -20)
                 
                 // write forgot password below that
                 NavigationLink(destination: ForgotPasswordView()) {
@@ -64,8 +66,8 @@ struct LoginView: View {
                         .foregroundColor(Color("NewBlue"))
                         
                 }
-                .offset(y: +100)
-                .offset(x: +100)
+                .offset(y: +65)
+                .offset(x: +80)
                 
                 // Create the Login Button that will direct you to the home page
                 NavigationLink(destination: HomeView()) {
@@ -77,7 +79,44 @@ struct LoginView: View {
                         .font(.system(size: 18, weight: .semibold))
                         .shadow(radius: 2)
                 }
-                .offset(y: 180)
+                .offset(y: 130)
+                
+                HStack(spacing: 1) {
+                                    // Sign in with Apple
+                                    SignInWithAppleButton(
+                                        onRequest: { request in
+                                            request.requestedScopes = [.fullName, .email]
+                                        },
+                                        onCompletion: { result in
+                                            // Handle result here
+                                        }
+                                    )
+                                    .signInWithAppleButtonStyle(.black)
+                                    .frame(height: 40)
+                                    .frame(width: 137)
+                                    .cornerRadius(10)
+                                    .offset(x: 16)
+
+                                    // Login with Google - visual button
+                                    Button(action: {
+                                        // Trigger Google sign-in logic here
+                                    }) {
+                                        HStack {
+                                            Image(systemName: "globe")
+                                                .foregroundColor(.white)
+                                            Text("Sign in with Google")
+                                                .foregroundColor(.white)
+                                                .fontWeight(.semibold)
+                                        }
+                                        .frame(maxWidth: .infinity)
+                                        .frame(height: 40)
+                                        .frame(width: 137)
+                                        .background(Color.red)
+                                        .cornerRadius(10)
+                                        .padding(.horizontal, 20)
+                                    }
+                                }
+                                .offset(y: 200)
                 
                 //add the Login with Google/Facebook
                 

@@ -1,0 +1,39 @@
+
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sri Venkateswara Temple of North Carolina",
+        "location": "Cary, NC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-78.5867, 35.8509]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sri Somesvara Temple",
+        "location": "Clyde, NC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-82.6110, 35.4319]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hindu Society of North Carolina",
+        "location": "Morrisville, NC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-78.8131, 35.8336]
+      }
+    }
+  ]
+}

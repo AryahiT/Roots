@@ -42,7 +42,7 @@ struct SplashView: View {
                     .font(.system(size: 39, weight: .bold))
                     .foregroundColor(Color("AccentColor"))
             }
-            .offset(y: 5)
+            .offset(y: 4)
         }
     }
 }
